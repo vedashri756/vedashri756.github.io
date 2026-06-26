@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Vedashri Dhaneshwar — Data Scientist</title>
+<style>
+:root{--bg:#0a0a0a;--s1:#111;--s2:#161616;--br:#222;--txt:#ddd;--mu:#666;--acc:#7eb8f7;--mono:'Courier New',monospace;--sans:'Segoe UI',system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;background:rgba(10,10,10,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--br)}
+.nl{font-family:var(--mono);font-size:.78rem;color:var(--acc);letter-spacing:.06em}
+.nr{display:flex;gap:2rem}
+.nr a{font-size:.75rem;color:var(--mu);letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.nr a:hover{color:var(--txt);text-decoration:none}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 2.5rem 4rem;max-width:1060px;margin:0 auto}
+.htag{font-family:var(--mono);font-size:.72rem;color:var(--mu);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.4rem}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:700;line-height:1.06;letter-spacing:-.025em;margin-bottom:1.6rem}
+.hero h1 em{font-style:normal;color:var(--mu)}
+.hdesc{font-size:.97rem;color:var(--mu);max-width:520px;margin-bottom:2.5rem;line-height:1.72}
+.hstats{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.sn{font-family:var(--mono);font-size:1.9rem;font-weight:700;color:var(--txt)}
+.sl{font-size:.68rem;color:var(--mu);letter-spacing:.06em;text-transform:uppercase;margin-top:.1rem}
+.hcta{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.65rem 1.6rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;border-radius:3px;transition:all .2s}
+.btn-p{background:var(--acc);color:#0a0a0a}
+.btn-p:hover{background:#a0ccff;text-decoration:none}
+.btn-g{border:1px solid var(--br);color:var(--mu)}
+.btn-g:hover{border-color:var(--mu);color:var(--txt);text-decoration:none}
+
+/* SECTION */
+section{padding:5rem 2.5rem;max-width:1060px;margin:0 auto}
+.slbl{font-family:var(--mono);font-size:.68rem;color:var(--mu);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem}
+.stitle{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;letter-spacing:-.015em;margin-bottom:2.5rem}
+
+/* PROJECTS */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;background:var(--br)}
+.pc{background:var(--s1);padding:1.8rem 1.6rem;transition:background .25s}
+.pc:hover{background:var(--s2)}
+.ptag{font-family:var(--mono);font-size:.63rem;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem}
+.pc h3{font-size:.97rem;font-weight:600;margin-bottom:.6rem;line-height:1.35}
+.pc p{font-size:.83rem;color:var(--mu);line-height:1.65;margin-bottom:1.1rem}
+.pm{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--txt)}
+.pml{font-size:.67rem;color:var(--mu);margin-bottom:1.2rem}
+.tr{display:flex;flex-wrap:wrap;gap:.35rem}
+.tg{font-family:var(--mono);font-size:.62rem;color:var(--mu);border:1px solid var(--br);padding:.18rem .45rem;border-radius:2px}
+.plink{display:inline-block;margin-top:1rem;font-size:.72rem;color:var(--acc);letter-spacing:.05em;text-transform:uppercase;font-weight:600;transition:color .2s}
+.plink:hover{color:#a0ccff;text-decoration:none}
+
+/* SKILLS */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--br)}
+.sg{background:var(--s1);padding:1.4rem 1.3rem}
+.sg h4{font-size:.72rem;font-weight:700;color:var(--txt);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.9rem}
+.sc{display:flex;flex-wrap:wrap;gap:.35rem}
+.sk{font-family:var(--mono);font-size:.63rem;color:var(--mu);background:var(--s2);padding:.22rem .55rem;border-radius:2px}
+
+/* EXPERIENCE */
+.ei{border-left:1px solid var(--br);padding-left:1.6rem;margin-bottom:2.2rem;position:relative}
+.ei::before{content:'';position:absolute;left:-4px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--acc)}
+.er{font-size:.97rem;font-weight:600;margin-bottom:.18rem}
+.eo{font-size:.82rem;color:var(--acc);margin-bottom:.2rem}
+.ed{font-family:var(--mono);font-size:.68rem;color:var(--mu);margin-bottom:.8rem}
+.eb{list-style:none}
+.eb li{font-size:.83rem;color:var(--mu);margin-bottom:.35rem;padding-left:.9rem;position:relative}
+.eb li::before{content:'–';position:absolute;left:0;color:var(--br)}
+.eb strong{color:var(--txt)}
+
+/* CONTACT */
+.cb{background:var(--s1);border:1px solid var(--br);padding:2.8rem 2rem;text-align:center;max-width:500px;margin:0 auto}
+.cb h3{font-size:1.4rem;font-weight:700;margin-bottom:.5rem}
+.cb p{font-size:.87rem;color:var(--mu);margin-bottom:2rem}
+.cl{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-top:1.2rem}
+.cl a{font-family:var(--mono);font-size:.75rem;color:var(--mu);letter-spacing:.05em;transition:color .2s}
+.cl a:hover{color:var(--acc);text-decoration:none}
+
+footer{border-top:1px solid var(--br);padding:1.8rem 2.5rem;text-align:center;font-family:var(--mono);font-size:.68rem;color:var(--mu)}
+
+/* LINE ANIM under name */
+.uline{display:inline-block;position:relative}
+.uline::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--acc);transition:width 1.2s ease .4s}
+.uline.visible::after{width:100%}
+
+@media(max-width:640px){nav{padding:1rem 1.2rem}.nr{gap:1.2rem}.hero{padding:6rem 1.2rem 3rem}section{padding:3.5rem 1.2rem}.hstats{gap:1.8rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nl">VD</span>
+  <div class="nr">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="htag reveal">Data Science · Machine Learning · NLP</div>
+  <h1 class="reveal">
+    <span class="uline">Vedashri</span><br>
+    <em>Dhaneshwar</em>
+  </h1>
+  <p class="hdesc reveal">M.Sc. Data Science, VIT Chennai. I build ML systems end-to-end — from BERT embeddings and big data pipelines to deployed REST APIs and interactive dashboards.</p>
+  <div class="hstats reveal">
+    <div><div class="sn" data-target="0.81" data-float="true">0</div><div class="sl">R² deployed model</div></div>
+    <div><div class="sn" data-target="500" data-suffix="K+">0</div><div class="sl">records processed</div></div>
+    <div><div class="sn" data-target="91" data-suffix="%">0</div><div class="sl">classifier accuracy</div></div>
+    <div><div class="sn" data-target="3.8" data-suffix=" GB" data-float="true">0</div><div class="sl">big data pipeline</div></div>
+  </div>
+  <div class="hcta reveal">
+    <a href="#projects" class="btn btn-p">View Projects</a>
+    <a href="mailto:vedashridhaneshwar@gmail.com" class="btn btn-g">Get in Touch</a>
+  </div>
+</div>
+
+<section id="projects">
+  <div class="slbl reveal">Work</div>
+  <div class="stitle reveal">Featured Projects</div>
+  <div class="pgrid">
+    <div class="pc reveal">
+      <div class="ptag">Big Data · Academic</div>
+      <h3>Wikipedia Edit Analytics &amp; Vandalism Detection</h3>
+      <div class="pm">500K+</div><div class="pml">edits across 30,765 articles</div>
+      <p>End-to-end Lambda Architecture on a 3.8 GB Wikipedia dump. Surfaced 463 extreme-risk articles and 3 coordinated vandal accounts with 81–97% revert rates.</p>
+      <div class="tr"><span class="tg">Hadoop</span><span class="tg">Spark SQL</span><span class="tg">Spark RDD</span><span class="tg">Pig</span><span class="tg">HBase</span><span class="tg">MapReduce</span></div>
+      <a class="plink" href="https://github.com/vedashri756/wikipedia-edit-analytics" target="_blank">GitHub →</a>
+    </div>
+    <div class="pc reveal">
+      <div class="ptag">NLP · Deep Learning · Live</div>
+      <h3>Cognitive Load Predictor</h3>
+      <div class="pm">R² 0.81</div><div class="pml">HuggingFace Spaces · 100+ req/day</div>
+      <p>YouTube metadata → BERT embeddings → PyTorch regression. Served via FastAPI on Render; 20+ active users.</p>
+      <div class="tr"><span class="tg">BERT</span><span class="tg">PyTorch</span><span class="tg">HuggingFace</span><span class="tg">FastAPI</span><span class="tg">Render</span></div>
+      <a class="plink" href="https://huggingface.co" target="_blank">Live Demo →</a>
+    </div>
+    <div class="pc reveal">
+      <div class="ptag">NLP · Classification · Live</div>
+      <h3>AI Phishing Email Detector</h3>
+      <div class="pm">85%</div><div class="pml">10K+ emails · 22% above baseline</div>
+      <p>TF-IDF + Logistic Regression. Explainable Streamlit UI with per-prediction token attribution — users see exactly why each email was flagged.</p>
+      <div class="tr"><span class="tg">TF-IDF</span><span class="tg">Logistic Regression</span><span class="tg">Streamlit</span></div>
+    </div>
+    <div class="pc reveal">
+      <div class="ptag">ML · Internship</div>
+      <h3>Crop Recommendation Classifier</h3>
+      <div class="pm">91%</div><div class="pml">50K-row dataset · 30% noise reduction</div>
+      <p>Random Forest + SMOTE on biomedical EMG/EEG data. Domain preprocessing cut false-positives ~18%.</p>
+      <div class="tr"><span class="tg">Random Forest</span><span class="tg">SMOTE</span><span class="tg">Signal Processing</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="slbl reveal">Stack</div>
+  <div class="stitle reveal">Technical Skills</div>
+  <div class="sgrid">
+    <div class="sg reveal"><h4>Languages</h4><div class="sc"><span class="sk">Python</span><span class="sk">R</span><span class="sk">SQL</span></div></div>
+    <div class="sg reveal"><h4>Big Data</h4><div class="sc"><span class="sk">Hadoop</span><span class="sk">HDFS</span><span class="sk">MapReduce</span><span class="sk">Spark SQL</span><span class="sk">Spark RDD</span><span class="sk">Pig</span><span class="sk">HBase</span></div></div>
+    <div class="sg reveal"><h4>Machine Learning</h4><div class="sc"><span class="sk">Classification</span><span class="sk">Regression</span><span class="sk">NLP</span><span class="sk">SMOTE</span><span class="sk">Anomaly Detection</span></div></div>
+    <div class="sg reveal"><h4>Deep Learning</h4><div class="sc"><span class="sk">PyTorch</span><span class="sk">BERT</span><span class="sk">HuggingFace</span><span class="sk">Embeddings</span></div></div>
+    <div class="sg reveal"><h4>Deployment</h4><div class="sc"><span class="sk">FastAPI</span><span class="sk">Flask</span><span class="sk">Render</span><span class="sk">HuggingFace Spaces</span><span class="sk">Streamlit</span></div></div>
+    <div class="sg reveal"><h4>Analytics</h4><div class="sc"><span class="sk">Pandas</span><span class="sk">NumPy</span><span class="sk">Power BI</span><span class="sk">SQL</span><span class="sk">Git</span></div></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="slbl reveal">Career</div>
+  <div class="stitle reveal">Experience</div>
+  <div class="ei reveal">
+    <div class="er">Data Science Intern</div>
+    <div class="eo">Shamgar Software Solutions Pvt. Ltd., Chennai</div>
+    <div class="ed">Nov 2025 – Present</div>
+    <ul class="eb">
+      <li><strong>91% accuracy</strong> classifier (Random Forest + SMOTE); ~18% false-positive reduction via signal preprocessing.</li>
+      <li><strong>~40% reduction</strong> in reporting time via Streamlit + Power BI dashboards for 3 teams (100K+ rows).</li>
+      <li><strong>Automated credential verification</strong> for 200+ records; ~60% effort reduction.</li>
+      <li><strong>Schema standardization</strong> across 5 databases; ETL documentation adopted by engineering.</li>
+    </ul>
+  </div>
+  <div class="ei reveal">
+    <div class="er">Technical Coordinator</div>
+    <div class="eo">Agentic AI Workshop, VIT Chennai</div>
+    <div class="ed">2025</div>
+    <ul class="eb">
+      <li>Designed and ran hands-on sessions for <strong>50+ participants</strong> on agentic AI and LLM tooling.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="cb reveal">
+    <h3>Let's connect.</h3>
+    <p>Open to Data Scientist, ML Engineer, and Data Analyst roles.</p>
+    <a href="mailto:vedashridhaneshwar@gmail.com" class="btn btn-p">vedashridhaneshwar@gmail.com</a>
+    <div class="cl">
+      <a href="https://www.linkedin.com/in/vedashri-dhaneshwar-ba6838367" target="_blank">LinkedIn</a>
+      <a href="https://github.com/vedashri756" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>Vedashri Dhaneshwar · Chennai, India · 2026</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Trigger hero immediately
+document.querySelectorAll('.hero .reveal').forEach((el,i) => {
+  setTimeout(() => el.classList.add('visible'), i * 140);
+});
+
+// Counter animation
+function animateCount(el){
+  const target = parseFloat(el.dataset.target);
+  const isFloat = el.dataset.float === 'true';
+  const suffix = el.dataset.suffix || '';
+  const dur = 1400, steps = 50, interval = dur/steps;
+  let step = 0;
+  const t = setInterval(() => {
+    step++;
+    const val = target * (step/steps);
+    el.textContent = (isFloat ? val.toFixed(2) : Math.round(val)) + suffix;
+    if(step >= steps){ el.textContent = (isFloat ? target.toFixed(2) : target) + suffix; clearInterval(t); }
+  }, interval);
+}
+
+// Trigger counters when stats section enters view
+const statsEl = document.querySelector('.hstats');
+const statsObs = new IntersectionObserver((entries) => {
+  if(entries[0].isIntersecting){
+    document.querySelectorAll('.sn[data-target]').forEach(animateCount);
+    statsObs.unobserve(statsEl);
+  }
+}, { threshold: 0.3 });
+statsObs.observe(statsEl);
+
+// Underline animation trigger
+document.querySelectorAll('.uline').forEach(el => {
+  const o = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting){ el.classList.add('visible'); o.unobserve(el); }
+  }, {threshold:0.5});
+  o.observe(el);
+});
+</script>
+</body>
+</html>
